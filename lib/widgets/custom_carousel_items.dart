@@ -4,9 +4,11 @@ class CarouselItems extends StatelessWidget {
   var imagename;
   var itemname;
   var bgcolor;
+  var status;
   CarouselItems({
     required this.imagename,
     required this.itemname,
+    this.status = true,
     this.bgcolor,
     super.key,
   });
@@ -41,14 +43,15 @@ class CarouselItems extends StatelessWidget {
           const SizedBox(
             height: 40,
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 8.0),
-            child: Text(
-              "Shop",
-              style:
-                  TextStyle(fontSize: 15, letterSpacing: 1, decoration: TextDecoration.underline),
-            ),
-          )
+          Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: !status
+                  ? Container()
+                  : const Text(
+                      "Shop",
+                      style: TextStyle(
+                          fontSize: 15, letterSpacing: 1, decoration: TextDecoration.underline),
+                    ))
         ]),
       ),
     );
