@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/colors.dart';
@@ -35,21 +34,21 @@ class ShoesCarouselWidget extends StatelessWidget {
         ),
         Text(
           shoesname,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: AppColor.textColor),
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: AppColor.textColor),
         ),
         const SizedBox(
           height: 13,
         ),
         Text(
           shoestype,
-          style: TextStyle(fontSize: 14, color: Color(0xff757575)),
+          style: const TextStyle(fontSize: 14, color: Color(0xff757575)),
         ),
         const SizedBox(
           height: 13,
         ),
         Text(
           shoesprice,
-          style: TextStyle(fontSize: 13, color: AppColor.textColor, fontWeight: FontWeight.w400),
+          style: const TextStyle(fontSize: 13, color: AppColor.textColor, fontWeight: FontWeight.w400),
         )
       ]),
     );

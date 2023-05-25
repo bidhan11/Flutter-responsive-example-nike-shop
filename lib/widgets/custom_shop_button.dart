@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nike_shop/utils/colors.dart';
 
 class CustomShopButton extends StatelessWidget {
   var bttitle;

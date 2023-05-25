@@ -5,11 +5,13 @@ import 'package:nike_shop/utils/colors.dart';
 import 'package:nike_shop/widgets/custom_carousel_items.dart';
 import 'package:nike_shop/widgets/custom_notices_sliders.dart';
 import 'package:nike_shop/widgets/custom_shop_button.dart';
-
+import 'package:responsive_framework/responsive_framework.dart';
 import '../widgets/custom_shoes_items.dart';
 
 class ProductsPage extends StatelessWidget {
   static const String routeName = "/productspage";
+
+  const ProductsPage({super.key});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,32 +26,123 @@ class ProductsPage extends StatelessWidget {
                 leading: Container(
                     padding: const EdgeInsets.only(left: 20),
                     child: Center(child: SvgPicture.asset("assets/images/logo.svg"))),
+                title: const ResponsiveVisibility(
+                  hiddenConditions: [Condition.smallerThan(name: DESKTOP)],
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "New & Featured",
+                        style: TextStyle(color: AppColor.textColor, fontSize: 17),
+                      ),
+                      SizedBox(
+                        width: 32,
+                      ),
+                      Text(
+                        "Men",
+                        style: TextStyle(color: AppColor.textColor, fontSize: 17),
+                      ),
+                      SizedBox(
+                        width: 32,
+                      ),
+                      Text(
+                        "Women",
+                        style: TextStyle(color: AppColor.textColor, fontSize: 17),
+                      ),
+                      SizedBox(
+                        width: 32,
+                      ),
+                      Text(
+                        "Kids",
+                        style: TextStyle(color: AppColor.textColor, fontSize: 17),
+                      ),
+                      SizedBox(
+                        width: 32,
+                      ),
+                      Text(
+                        "Accessories",
+                        style: TextStyle(color: AppColor.textColor, fontSize: 17),
+                      ),
+                      SizedBox(
+                        width: 32,
+                      ),
+                      Text(
+                        "Sale",
+                        style: TextStyle(color: AppColor.textColor, fontSize: 17),
+                      ),
+                    ],
+                  ),
+                ),
                 elevation: 0,
                 actions: const [
-                  Icon(
-                    Icons.search,
-                    color: AppColor.iconColor,
-                    size: 24,
+                  ResponsiveVisibility(
+                    hiddenConditions: [
+                      Condition.largerThan(name: TABLET),
+                    ],
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.search,
+                          color: AppColor.iconColor,
+                          size: 24,
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Icon(
+                          Icons.shopping_bag_outlined,
+                          color: AppColor.iconColor,
+                          size: 24,
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Icon(
+                          Icons.menu,
+                          color: AppColor.iconColor,
+                          size: 24,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        )
+                      ],
+                    ),
                   ),
-                  SizedBox(
-                    width: 30,
+                  ResponsiveVisibility(
+                    hiddenConditions: [
+                      Condition.smallerThan(name: TABLET),
+                      Condition.equals(name: TABLET)
+                    ],
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.search,
+                          color: AppColor.iconColor,
+                          size: 24,
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Icon(
+                          Icons.favorite_border_outlined,
+                          color: AppColor.iconColor,
+                          size: 24,
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Icon(
+                          Icons.shopping_bag_outlined,
+                          color: AppColor.iconColor,
+                          size: 24,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        )
+                      ],
+                    ),
                   ),
-                  Icon(
-                    Icons.shopping_bag_outlined,
-                    color: AppColor.iconColor,
-                    size: 24,
-                  ),
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Icon(
-                    Icons.menu,
-                    color: AppColor.iconColor,
-                    size: 24,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  )
                 ],
               ),
             ),
