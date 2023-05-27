@@ -162,55 +162,66 @@ class ProductsPage extends StatelessWidget {
               elevation: 0,
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
-                  margin: const EdgeInsets.only(left: 27),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 38,
-                      ),
-                      Text(
-                        "Men",
-                        style:
-                            TextStyle(fontSize: 24, letterSpacing: 2.4, color: AppColor.textColor),
-                      ),
-                      SizedBox(
-                        height: 38,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            "Shoes",
-                            style: TextStyle(
-                                fontSize: 15, letterSpacing: 1, color: AppColor.textColor),
+                    margin: const EdgeInsets.only(left: 27),
+                    child: ResponsiveRowColumn(
+                      rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      rowCrossAxisAlignment: CrossAxisAlignment.center,
+                      columnCrossAxisAlignment: CrossAxisAlignment.start,
+                      columnMainAxisAlignment: MainAxisAlignment.spaceAround,
+                      layout: ResponsiveBreakpoints.of(context).largerThan(TABLET)
+                          ? ResponsiveRowColumnType.ROW
+                          : ResponsiveRowColumnType.COLUMN,
+                      children: [
+                        ResponsiveRowColumnItem(
+                            rowFlex: 1,
+                            columnFlex: 1,
+                            child: Text("Men",
+                                style: TextStyle(
+                                    fontSize: ResponsiveValue(context, conditionalValues: [
+                                      const Condition.smallerThan(name: TABLET, value: 20.0),
+                                      const Condition.largerThan(name: TABLET, value: 26.0)
+                                    ]).value,
+                                    letterSpacing: 1,
+                                    color: AppColor.textColor))),
+                        ResponsiveRowColumnItem(
+                          rowFlex: 2,
+                          columnFlex: 1,
+                          child: Row(
+                            children: [
+                              Text("Shoes",
+                                  style: TextStyle(
+                                      fontSize: fontSize(context).value,
+                                      letterSpacing: 1,
+                                      color: AppColor.textColor)),
+                              const SizedBox(
+                                width: 40,
+                              ),
+                              Text("Clothing",
+                                  style: TextStyle(
+                                      fontSize: fontSize(context).value,
+                                      letterSpacing: 1,
+                                      color: AppColor.textColor)),
+                              const SizedBox(
+                                width: 40,
+                              ),
+                              Text("Accessories",
+                                  style: TextStyle(
+                                      fontSize: fontSize(context).value,
+                                      letterSpacing: 1,
+                                      color: AppColor.textColor)),
+                              const SizedBox(
+                                width: 40,
+                              ),
+                              Text("Sale",
+                                  style: TextStyle(
+                                      fontSize: fontSize(context).value,
+                                      letterSpacing: 1,
+                                      color: AppColor.textColor)),
+                            ],
                           ),
-                          SizedBox(
-                            width: 35,
-                          ),
-                          Text(
-                            "Clothing",
-                            style: TextStyle(
-                                fontSize: 15, letterSpacing: 1, color: AppColor.textColor),
-                          ),
-                          SizedBox(
-                            width: 35,
-                          ),
-                          Text(
-                            "Accessories",
-                            style: TextStyle(
-                                fontSize: 15, letterSpacing: 1, color: AppColor.textColor),
-                          ),
-                          SizedBox(width: 35),
-                          Text(
-                            "Sale",
-                            style: TextStyle(
-                                fontSize: 15, letterSpacing: 1, color: AppColor.textColor),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                        ),
+                      ],
+                    )),
               ),
               // Replace with your content
             ),
@@ -828,5 +839,12 @@ class ProductsPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  ResponsiveValue<double> fontSize(BuildContext context) {
+    return ResponsiveValue(context, conditionalValues: [
+      const Condition.smallerThan(name: TABLET, value: 16.0),
+      const Condition.largerThan(name: TABLET, value: 18.0)
+    ]);
   }
 }
