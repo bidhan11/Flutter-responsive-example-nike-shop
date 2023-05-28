@@ -157,8 +157,14 @@ class ProductsPage extends StatelessWidget {
               backgroundColor: AppColor.white,
               floating: false,
               pinned: true,
-              expandedHeight: 150,
-              collapsedHeight: 150,
+              expandedHeight: ResponsiveValue(context, conditionalValues: [
+                const Condition.smallerThan(name: TABLET, value: 150.0),
+                const Condition.largerThan(name: TABLET, value: 80.0)
+              ]).value,
+              collapsedHeight: ResponsiveValue(context, conditionalValues: [
+                const Condition.smallerThan(name: TABLET, value: 150.0),
+                const Condition.largerThan(name: TABLET, value: 80.0)
+              ]).value,
               elevation: 0,
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
@@ -231,42 +237,82 @@ class ProductsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset("assets/images/run.webp"),
+                  ResponsiveVisibility(
+                    hiddenConditions: const [Condition.smallerThan(name: TABLET)],
+                    child: Image.asset("assets/images/runlandscape.webp"),
+                  ),
+                  ResponsiveVisibility(
+                    hiddenConditions: const [Condition.largerThan(name: TABLET)],
+                    child: Image.asset("assets/images/run.webp"),
+                  ),
                   const SizedBox(
                     height: 26,
                   ),
-                  const Text(
-                    "THE PEGASUS 40 CELEBRATES ITS PAST",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        letterSpacing: 0.1,
-                        height: 1,
-                        fontSize: 45,
-                        fontWeight: FontWeight.w900,
-                        color: AppColor.textColor),
-                  ),
-                  const SizedBox(
-                    height: 35,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(right: 50.0),
-                    child: Text(
-                      "Featuring throwback colors and Swooshes plucked from iconic Pegasus releases",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: 16,
-                        height: 1.4,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 38,
-                  ),
-                  CustomShopButton(
-                    bttitle: "Shop",
-                    bgcolor: AppColor.textColor,
-                    textcolor: AppColor.white,
-                  ),
+                  ResponsiveVisibility(
+                      hiddenConditions: const [Condition.smallerThan(name: TABLET)],
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 450),
+                        child: Column(children: [
+                          const Text(
+                            "THE PEGASUS 40 CELEBRATES ITS PAST",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
+                          ),
+                          const SizedBox(
+                            height: 35,
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 100.0),
+                            child: Text(
+                              "Featuring throwback colors and Swooshes plucked from iconic Pegasus releases",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 18,
+                                height: 1.4,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 38,
+                          ),
+                          CustomShopButton(
+                            bttitle: "Shop",
+                            bgcolor: AppColor.textColor,
+                            textcolor: AppColor.white,
+                          ),
+                        ]),
+                      )),
+                  ResponsiveVisibility(
+                      hiddenConditions: const [Condition.largerThan(name: TABLET)],
+                      child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                        const Text(
+                          "THE PEGASUS 40 CELEBRATES ITS PAST",
+                          textAlign: TextAlign.start,
+                          style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900),
+                        ),
+                        const SizedBox(
+                          height: 35,
+                        ),
+                        const Text(
+                          "Featuring throwback colors and Swooshes plucked from iconic Pegasus releases",
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            fontSize: 14,
+                            height: 1.4,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 38,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 270),
+                          child: CustomShopButton(
+                            bttitle: "Shop",
+                            bgcolor: AppColor.textColor,
+                            textcolor: AppColor.white,
+                          ),
+                        ),
+                      ])),
                   const SizedBox(
                     height: 110,
                   ),
@@ -277,30 +323,132 @@ class ProductsPage extends StatelessWidget {
                   const SizedBox(
                     height: 33,
                   ),
-                  CarouselSlider(
-                      items: [
-                        CarouselItems(
-                          imagename: "assets/images/hoodie.webp",
-                          itemname: "Clothing",
-                          bgcolor: const Color(0xfff2f2f2),
+                  ResponsiveVisibility(
+                    hiddenConditions: const [Condition.smallerThan(name: TABLET)],
+                    child: Row(children: [
+                      Flexible(
+                        flex: 1,
+                        child: Stack(alignment: Alignment.bottomLeft, children: [
+                          Image.asset(
+                            "assets/images/hoodie.webp",
+                            height: 1250,
+                          ),
+                          Positioned(
+                            left: 60,
+                            top: 1060,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                const Text("Clothing",
+                                    style: TextStyle(
+                                        fontSize: 23,
+                                        color: AppColor.textColor,
+                                        fontWeight: FontWeight.w500)),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                CustomShopButton(
+                                    bttitle: "Shop",
+                                    bgcolor: AppColor.textColor,
+                                    textcolor: AppColor.white)
+                              ],
+                            ),
+                          ),
+                        ]),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          children: [
+                            Stack(alignment: Alignment.bottomLeft, children: [
+                              Image.asset(
+                                "assets/images/shoes.webp",
+                                height: 600,
+                              ),
+                              Positioned(
+                                top: 480,
+                                left: 30,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    const Text("Shoes",
+                                        style: TextStyle(
+                                            fontSize: 23,
+                                            color: AppColor.textColor,
+                                            fontWeight: FontWeight.w500)),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    CustomShopButton(
+                                        bttitle: "Shop",
+                                        bgcolor: AppColor.textColor,
+                                        textcolor: AppColor.white)
+                                  ],
+                                ),
+                              ),
+                            ]),
+                            Stack(alignment: Alignment.bottomLeft, children: [
+                              Image.asset(
+                                "assets/images/bag.webp",
+                                height: 600,
+                              ),
+                              Positioned(
+                                top: 480,
+                                left: 30,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    const Text("Accessories",
+                                        style: TextStyle(
+                                            fontSize: 23,
+                                            color: AppColor.textColor,
+                                            fontWeight: FontWeight.w500)),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    CustomShopButton(
+                                        bttitle: "Shop",
+                                        bgcolor: AppColor.textColor,
+                                        textcolor: AppColor.white)
+                                  ],
+                                ),
+                              ),
+                            ]),
+                          ],
                         ),
-                        CarouselItems(
-                          imagename: "assets/images/shoes.webp",
-                          itemname: "Shoes",
-                          bgcolor: const Color(0xfff6f6f6),
-                        ),
-                        CarouselItems(
-                          imagename: "assets/images/bag.webp",
-                          itemname: "Accessories",
-                          bgcolor: const Color(0xfff6f6f6),
-                        )
-                      ],
-                      options: CarouselOptions(
-                          height: 500,
-                          disableCenter: true,
-                          enableInfiniteScroll: true,
-                          autoPlay: false,
-                          autoPlayAnimationDuration: const Duration(seconds: 1))),
+                      )
+                    ]),
+                  ),
+                  ResponsiveVisibility(
+                    hiddenConditions: const [Condition.largerThan(name: MOBILE)],
+                    child: CarouselSlider(
+                        items: [
+                          CarouselItems(
+                            imagename: "assets/images/hoodie.webp",
+                            itemname: "Clothing",
+                            bgcolor: const Color(0xfff2f2f2),
+                          ),
+                          CarouselItems(
+                            imagename: "assets/images/shoes.webp",
+                            itemname: "Shoes",
+                            bgcolor: const Color(0xfff6f6f6),
+                          ),
+                          CarouselItems(
+                            imagename: "assets/images/bag.webp",
+                            itemname: "Accessories",
+                            bgcolor: const Color(0xfff6f6f6),
+                          )
+                        ],
+                        options: CarouselOptions(
+                            height: 500,
+                            disableCenter: true,
+                            enableInfiniteScroll: true,
+                            autoPlay: false,
+                            autoPlayAnimationDuration: const Duration(seconds: 1))),
+                  ),
                   const SizedBox(
                     height: 112,
                   ),
