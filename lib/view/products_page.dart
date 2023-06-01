@@ -533,74 +533,90 @@ class ProductsPage extends StatelessWidget {
                   const SizedBox(
                     height: 112,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  const Text(
+                    "Trending",
+                    style: TextStyle(
+                        color: AppColor.textColor,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 1),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+
+                  ResponsiveRowColumn(
+                    layout: ResponsiveBreakpoints.of(context).largerThan(MOBILE)
+                        ? ResponsiveRowColumnType.ROW
+                        : ResponsiveRowColumnType.COLUMN,
                     children: [
-                      const Text(
-                        "Trending",
-                        style: TextStyle(
-                            color: AppColor.textColor,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w400,
-                            letterSpacing: 1),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Stack(
-                        alignment: Alignment.bottomLeft,
-                        children: [
-                          Image.asset("assets/images/banner1.webp"),
-                          const Padding(
-                            padding: EdgeInsets.only(bottom: 50.0, left: 25),
-                            child: Text(
-                              "New Styles of Air Max",
-                              style: TextStyle(
-                                  fontSize: 23, color: AppColor.white, fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25.0, bottom: 7),
-                            child: CustomShopButton(
-                                bttitle: "Shop",
-                                bgcolor: AppColor.white,
-                                textcolor: AppColor.textColor),
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Stack(
-                        alignment: Alignment.bottomLeft,
-                        children: [
-                          Image.asset("assets/images/banner2.webp"),
-                          const Padding(
-                            padding: EdgeInsets.only(bottom: 50.0, left: 25),
-                            child: Padding(
-                              padding: EdgeInsets.only(right: 150.0),
+                      ResponsiveRowColumnItem(
+                        rowFit: FlexFit.tight,
+                        child: Stack(
+                          alignment: Alignment.bottomLeft,
+                          children: [
+                            Image.asset("assets/images/banner1.webp"),
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 50.0, left: 25),
                               child: Text(
-                                "The Latest from Nike Basketball",
+                                "New Styles of Air Max",
                                 style: TextStyle(
                                     fontSize: 23,
-                                    color: AppColor.textColor,
+                                    color: AppColor.white,
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25.0, bottom: 7),
-                            child: CustomShopButton(
-                                bttitle: "Shop",
-                                bgcolor: AppColor.textColor,
-                                textcolor: AppColor.white),
-                          )
-                        ],
+                            Padding(
+                              padding: const EdgeInsets.only(left: 25.0, bottom: 7),
+                              child: CustomShopButton(
+                                  bttitle: "Shop",
+                                  bgcolor: AppColor.white,
+                                  textcolor: AppColor.textColor),
+                            )
+                          ],
+                        ),
                       ),
-                      const SizedBox(
-                        height: 106,
+                      const ResponsiveRowColumnItem(
+                        child: SizedBox(
+                          width: 10,
+                        ),
                       ),
+                      ResponsiveRowColumnItem(
+                        rowFit: FlexFit.tight,
+                        child: Stack(
+                          alignment: Alignment.bottomLeft,
+                          children: [
+                            Image.asset("assets/images/banner2.webp"),
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 50.0, left: 25),
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 150.0),
+                                child: Text(
+                                  "The Latest from Nike Basketball",
+                                  style: TextStyle(
+                                      fontSize: 23,
+                                      color: AppColor.textColor,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 25.0, bottom: 7),
+                              child: CustomShopButton(
+                                  bttitle: "Shop",
+                                  bgcolor: AppColor.textColor,
+                                  textcolor: AppColor.white),
+                            )
+                          ],
+                        ),
+                      )
                     ],
+                  ),
+
+                  //
+
+                  const SizedBox(
+                    height: 106,
                   ),
                   const Text(
                     "More to Explore",
