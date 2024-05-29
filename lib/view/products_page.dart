@@ -715,177 +715,173 @@ class ProductsPage extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-
-                  ResponsiveVisibility(
-                    visibleConditions: const [Condition.smallerThan(name: DESKTOP)],
-                    child: Stack(
-                      alignment: AlignmentDirectional.bottomStart,
-                      children: [
-                        Image.asset("assets/images/soosh.png"),
-                        Positioned(
-                          left: 10,
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 26),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  "BECOME A \nMEMBER",
-                                  style: TextStyle(
-                                      color: AppColor.white,
-                                      fontSize: 50,
-                                      fontWeight: FontWeight.w900),
-                                ),
-                                const SizedBox(
-                                  height: 25,
-                                ),
-                                const Text(
-                                  "Sign Up For Free. Join The Community",
-                                  style: TextStyle(
-                                      fontSize: 16, color: AppColor.white, wordSpacing: 1),
-                                ),
-                                const SizedBox(
-                                  height: 25,
-                                ),
-                                Row(
+                  ResponsiveBreakpoints.of(context).equals(MOBILE)
+                      ? Stack(
+                          alignment: AlignmentDirectional.bottomStart,
+                          children: [
+                            Image.asset("assets/images/soosh.png"),
+                            Positioned(
+                              left: 10,
+                              child: Container(
+                                margin: const EdgeInsets.symmetric(horizontal: 26),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    CustomShopButton(
-                                        bttitle: "Join Us",
-                                        bgcolor: AppColor.white,
-                                        textcolor: AppColor.textColor),
-                                    const SizedBox(
-                                      width: 5,
+                                    const Text(
+                                      "BECOME A \nMEMBER",
+                                      style: TextStyle(
+                                          color: AppColor.white,
+                                          fontSize: 50,
+                                          fontWeight: FontWeight.w900),
                                     ),
-                                    CustomShopButton(
-                                        bttitle: "Sign In",
-                                        bgcolor: AppColor.white,
-                                        textcolor: AppColor.textColor),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    const Text(
+                                      "Sign Up For Free. Join The Community",
+                                      style: TextStyle(
+                                          fontSize: 16, color: AppColor.white, wordSpacing: 1),
+                                    ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    Row(
+                                      children: [
+                                        CustomShopButton(
+                                            bttitle: "Join Us",
+                                            bgcolor: AppColor.white,
+                                            textcolor: AppColor.textColor),
+                                        const SizedBox(
+                                          width: 5,
+                                        ),
+                                        CustomShopButton(
+                                            bttitle: "Sign In",
+                                            bgcolor: AppColor.white,
+                                            textcolor: AppColor.textColor),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    )
                                   ],
                                 ),
-                                const SizedBox(
-                                  height: 20,
-                                )
+                              ),
+                            ),
+                          ],
+                        )
+                      : Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Stack(
+                              alignment: AlignmentDirectional.bottomStart,
+                              children: [
+                                Image.asset(
+                                  "assets/images/custom.jpg",
+                                  width: MediaQuery.of(context).size.width / 2 - 30,
+                                ),
+                                Positioned(
+                                  left: 10,
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(horizontal: 26),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        const Text(
+                                          "BECOME A \nMEMBER",
+                                          style: TextStyle(
+                                              color: AppColor.white,
+                                              fontSize: 50,
+                                              fontWeight: FontWeight.w900),
+                                        ),
+                                        const SizedBox(
+                                          height: 25,
+                                        ),
+                                        const Text(
+                                          "Sign Up For Free. Join The Community",
+                                          style: TextStyle(
+                                              fontSize: 16, color: AppColor.white, wordSpacing: 1),
+                                        ),
+                                        const SizedBox(
+                                          height: 25,
+                                        ),
+                                        Row(
+                                          children: [
+                                            CustomShopButton(
+                                                bttitle: "Join Us",
+                                                bgcolor: AppColor.white,
+                                                textcolor: AppColor.textColor),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            CustomShopButton(
+                                                bttitle: "Sign In",
+                                                bgcolor: AppColor.white,
+                                                textcolor: AppColor.textColor),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ResponsiveVisibility(
-                    visibleConditions: const [Condition.largerThan(name: MOBILE)],
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Stack(
-                          alignment: AlignmentDirectional.bottomStart,
-                          children: [
-                            Image.asset("assets/images/soosh.png"),
-                            Positioned(
-                              left: 10,
-                              child: Container(
-                                margin: const EdgeInsets.symmetric(horizontal: 26),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      "BECOME A \nMEMBER",
-                                      style: TextStyle(
-                                          color: AppColor.white,
-                                          fontSize: 50,
-                                          fontWeight: FontWeight.w900),
-                                    ),
-                                    const SizedBox(
-                                      height: 25,
-                                    ),
-                                    const Text(
-                                      "Sign Up For Free. Join The Community",
-                                      style: TextStyle(
-                                          fontSize: 16, color: AppColor.white, wordSpacing: 1),
-                                    ),
-                                    const SizedBox(
-                                      height: 25,
-                                    ),
-                                    Row(
+                            Stack(
+                              alignment: AlignmentDirectional.bottomStart,
+                              children: [
+                                Image.asset(
+                                  "assets/images/nikeGirl.jpg",
+                                  width: MediaQuery.of(context).size.width / 2 - 30,
+                                ),
+                                Positioned(
+                                  left: 10,
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(horizontal: 26),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        CustomShopButton(
-                                            bttitle: "Join Us",
-                                            bgcolor: AppColor.white,
-                                            textcolor: AppColor.textColor),
-                                        const SizedBox(
-                                          width: 5,
+                                        const Text(
+                                          "ENJOY EXCLUSIVE BENEFITS",
+                                          style: TextStyle(
+                                              color: AppColor.white,
+                                              fontSize: 50,
+                                              fontWeight: FontWeight.w900),
                                         ),
-                                        CustomShopButton(
-                                            bttitle: "Sign In",
-                                            bgcolor: AppColor.white,
-                                            textcolor: AppColor.textColor),
+                                        const SizedBox(
+                                          height: 25,
+                                        ),
+                                        const Text(
+                                          "Your exclusive access",
+                                          style: TextStyle(
+                                              fontSize: 16, color: AppColor.white, wordSpacing: 1),
+                                        ),
+                                        const SizedBox(
+                                          height: 25,
+                                        ),
+                                        Row(
+                                          children: [
+                                            CustomShopButton(
+                                                bttitle: "Shop",
+                                                bgcolor: AppColor.white,
+                                                textcolor: AppColor.textColor),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        )
                                       ],
                                     ),
-                                    const SizedBox(
-                                      height: 20,
-                                    )
-                                  ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
                           ],
                         ),
-                        Stack(
-                          alignment: AlignmentDirectional.bottomStart,
-                          children: [
-                            Image.asset("assets/images/soosh.png"),
-                            Positioned(
-                              left: 10,
-                              child: Container(
-                                margin: const EdgeInsets.symmetric(horizontal: 26),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      "BECOME A \nMEMBER",
-                                      style: TextStyle(
-                                          color: AppColor.white,
-                                          fontSize: 50,
-                                          fontWeight: FontWeight.w900),
-                                    ),
-                                    const SizedBox(
-                                      height: 25,
-                                    ),
-                                    const Text(
-                                      "Sign Up For Free. Join The Community",
-                                      style: TextStyle(
-                                          fontSize: 16, color: AppColor.white, wordSpacing: 1),
-                                    ),
-                                    const SizedBox(
-                                      height: 25,
-                                    ),
-                                    Row(
-                                      children: [
-                                        CustomShopButton(
-                                            bttitle: "Join Us",
-                                            bgcolor: AppColor.white,
-                                            textcolor: AppColor.textColor),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        CustomShopButton(
-                                            bttitle: "Sign In",
-                                            bgcolor: AppColor.white,
-                                            textcolor: AppColor.textColor),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
                   const SizedBox(
                     height: 55,
                   ),
