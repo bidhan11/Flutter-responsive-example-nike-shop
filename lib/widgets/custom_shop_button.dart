@@ -14,18 +14,19 @@ class CustomShopButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 80,
-      height: 40,
+    return Container(
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               elevation: 0,
               backgroundColor: bgcolor,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
           onPressed: () {},
-          child: Text(
-            bttitle,
-            style: TextStyle(color: textcolor, fontSize: 14.2, fontWeight: FontWeight.w600),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Text(
+              bttitle,
+              style: TextStyle(color: textcolor, fontSize: 14.2, fontWeight: FontWeight.w600),
+            ),
           )),
     );
   }

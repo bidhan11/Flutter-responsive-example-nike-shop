@@ -1,11 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_shop/utils/colors.dart';
 import 'package:nike_shop/widgets/custom_carousel_items.dart';
 import 'package:nike_shop/widgets/custom_notices_sliders.dart';
 import 'package:nike_shop/widgets/custom_shop_button.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:responsive_framework/responsive_value.dart';
 import '../widgets/custom_shoes_items.dart';
 
 class ProductsPage extends StatelessWidget {
@@ -526,6 +528,8 @@ class ProductsPage extends StatelessWidget {
                       ],
                       options: CarouselOptions(
                           height: 500,
+                          viewportFraction:
+                              ResponsiveBreakpoints.of(context).largerThan(MOBILE) ? 0.3 : 0.8,
                           disableCenter: true,
                           enableInfiniteScroll: true,
                           autoPlay: false,
@@ -656,6 +660,8 @@ class ProductsPage extends StatelessWidget {
                       options: CarouselOptions(
                           height: 420,
                           disableCenter: true,
+                          viewportFraction:
+                              ResponsiveBreakpoints.of(context).largerThan(MOBILE) ? 0.3 : 1.3,
                           enableInfiniteScroll: true,
                           autoPlay: false,
                           autoPlayAnimationDuration: const Duration(seconds: 1))),
@@ -693,6 +699,9 @@ class ProductsPage extends StatelessWidget {
                       options: CarouselOptions(
                           height: 420,
                           disableCenter: true,
+                          enlargeFactor: 0.5,
+                          viewportFraction:
+                              ResponsiveBreakpoints.of(context).largerThan(MOBILE) ? 0.3 : 0.8,
                           enableInfiniteScroll: true,
                           autoPlay: false,
                           autoPlayAnimationDuration: const Duration(seconds: 1))),
@@ -706,51 +715,176 @@ class ProductsPage extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  Stack(
-                    alignment: AlignmentDirectional.bottomStart,
-                    children: [
-                      Image.asset("assets/images/soosh.png"),
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 26),
-                        child: Column(
-                          children: [
-                            const Text(
-                              "BECOME A MEMBER",
-                              style: TextStyle(
-                                  color: AppColor.white, fontSize: 50, fontWeight: FontWeight.w900),
-                            ),
-                            const SizedBox(
-                              height: 25,
-                            ),
-                            const Text(
-                              "Sign Up For Free. Join The Community",
-                              style: TextStyle(fontSize: 16, color: AppColor.white, wordSpacing: 1),
-                            ),
-                            const SizedBox(
-                              height: 25,
-                            ),
-                            Row(
+
+                  ResponsiveVisibility(
+                    visibleConditions: const [Condition.smallerThan(name: DESKTOP)],
+                    child: Stack(
+                      alignment: AlignmentDirectional.bottomStart,
+                      children: [
+                        Image.asset("assets/images/soosh.png"),
+                        Positioned(
+                          left: 10,
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 26),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                CustomShopButton(
-                                    bttitle: "Join Us",
-                                    bgcolor: AppColor.white,
-                                    textcolor: AppColor.textColor),
-                                const SizedBox(
-                                  width: 5,
+                                const Text(
+                                  "BECOME A \nMEMBER",
+                                  style: TextStyle(
+                                      color: AppColor.white,
+                                      fontSize: 50,
+                                      fontWeight: FontWeight.w900),
                                 ),
-                                CustomShopButton(
-                                    bttitle: "Sign In",
-                                    bgcolor: AppColor.white,
-                                    textcolor: AppColor.textColor),
+                                const SizedBox(
+                                  height: 25,
+                                ),
+                                const Text(
+                                  "Sign Up For Free. Join The Community",
+                                  style: TextStyle(
+                                      fontSize: 16, color: AppColor.white, wordSpacing: 1),
+                                ),
+                                const SizedBox(
+                                  height: 25,
+                                ),
+                                Row(
+                                  children: [
+                                    CustomShopButton(
+                                        bttitle: "Join Us",
+                                        bgcolor: AppColor.white,
+                                        textcolor: AppColor.textColor),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    CustomShopButton(
+                                        bttitle: "Sign In",
+                                        bgcolor: AppColor.white,
+                                        textcolor: AppColor.textColor),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                )
                               ],
                             ),
-                            const SizedBox(
-                              height: 20,
-                            )
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  ResponsiveVisibility(
+                    visibleConditions: const [Condition.largerThan(name: MOBILE)],
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Stack(
+                          alignment: AlignmentDirectional.bottomStart,
+                          children: [
+                            Image.asset("assets/images/soosh.png"),
+                            Positioned(
+                              left: 10,
+                              child: Container(
+                                margin: const EdgeInsets.symmetric(horizontal: 26),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      "BECOME A \nMEMBER",
+                                      style: TextStyle(
+                                          color: AppColor.white,
+                                          fontSize: 50,
+                                          fontWeight: FontWeight.w900),
+                                    ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    const Text(
+                                      "Sign Up For Free. Join The Community",
+                                      style: TextStyle(
+                                          fontSize: 16, color: AppColor.white, wordSpacing: 1),
+                                    ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    Row(
+                                      children: [
+                                        CustomShopButton(
+                                            bttitle: "Join Us",
+                                            bgcolor: AppColor.white,
+                                            textcolor: AppColor.textColor),
+                                        const SizedBox(
+                                          width: 5,
+                                        ),
+                                        CustomShopButton(
+                                            bttitle: "Sign In",
+                                            bgcolor: AppColor.white,
+                                            textcolor: AppColor.textColor),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
                           ],
                         ),
-                      ),
-                    ],
+                        Stack(
+                          alignment: AlignmentDirectional.bottomStart,
+                          children: [
+                            Image.asset("assets/images/soosh.png"),
+                            Positioned(
+                              left: 10,
+                              child: Container(
+                                margin: const EdgeInsets.symmetric(horizontal: 26),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      "BECOME A \nMEMBER",
+                                      style: TextStyle(
+                                          color: AppColor.white,
+                                          fontSize: 50,
+                                          fontWeight: FontWeight.w900),
+                                    ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    const Text(
+                                      "Sign Up For Free. Join The Community",
+                                      style: TextStyle(
+                                          fontSize: 16, color: AppColor.white, wordSpacing: 1),
+                                    ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    Row(
+                                      children: [
+                                        CustomShopButton(
+                                            bttitle: "Join Us",
+                                            bgcolor: AppColor.white,
+                                            textcolor: AppColor.textColor),
+                                        const SizedBox(
+                                          width: 5,
+                                        ),
+                                        CustomShopButton(
+                                            bttitle: "Sign In",
+                                            bgcolor: AppColor.white,
+                                            textcolor: AppColor.textColor),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 55,
@@ -793,7 +927,7 @@ class ProductsPage extends StatelessWidget {
             )),
             SliverToBoxAdapter(
               child: Container(
-                height: 735,
+                height: 800,
                 color: AppColor.textColor,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 23.0, top: 37, right: 23),
